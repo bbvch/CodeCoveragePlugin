@@ -1,0 +1,44 @@
++-------------------+
+ CodeCoverage Plugin
++-------------------+
+
+
+Thomas Meister, 2015-07-24
+
+
+Quickstart
+---
+  1. Systemvoraussetzungen: Ubuntu 14.04LTS
+  2. Paket qtcreator-dev installieren (qtcreator 3.1.1)
+  3. Paket gcov installieren
+  4. Projekt in Qt Creator öffnen, builden
+  5. Beim Debuggen ist es praktisch einen neuen Creator zu öffnen und an einem 
+     Minimalprojekt zu testen. Die Tests für das CodeCoverage-Plugin eignen
+     sich dazu nicht.
+  
+  
+Über das Projekt
+---
+  Das Plugin wurde ursprünglich von 3Hren für eine ältere Qt-Version entwickelt 
+  und auf github veröffentlicht. Das Projekt wurde unter anderem von Typz ge-
+  forkt. Von ihm haben wir auch einen Fork gezogen. Um zur Ubuntu LTS kompatibel
+  zu sein, entwickeln wir vom 3.1 kompatiblen Stand weiter. Vielleicht werden 
+  wir zu einem späteren Zeitpunkt mehrere Versionen unterstützen.
+
+
+Probleme
+---
+  1. Wenn das Plugin keine Resultatfiles findet, wird die Auswertung nicht ab-
+     gebrochen. Das Plugin stürzt dann ab.
+  2. Beim finden von Resultatfiles wird wahrscheinlich angenommen, dass die Re-
+     sultatfiles im Sourcefolder liegen. Wenn aber ein Shadowbuild verwendet 
+     wird, stimmt das nicht.
+  3. Der Menüeintrag "Show code coverage" kann auch gedrückt werden, wenn 
+     "Run tests" nicht ausgeführt wurde. Das führt wahrscheinlich auch dazu, 
+     dass uninitialisierte Strukturen verwendet werden.
+  4. Die Zusammenschaltung der Signals & Slots ist etwas verwirrend (auch wegen 
+     dem Naming der Executors). Das Erstellen einer Übersicht wäre hilfreich.
+  5. Wie erhält man Output von gcov, der vom CodeCoverage-Plugin akzeptiert wird? 
+  5.1 Compilerflags: -fprofile-arcs -ftest-coverage -lgcov
+  5.2 Welche Annahmen über Systempfade wurden im Plugin getroffen?
+  

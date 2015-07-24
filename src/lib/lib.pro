@@ -11,9 +11,12 @@ DEFINES += CODECOVERAGE_LIBRARY
 ## set the QTC_SOURCE and QTC_BUILD environment variable to override the setting here
 IDE_SOURCE_TREE = $$QTC_SOURCE
 IDE_BUILD_TREE = $$QTC_BUILD
-PROVIDER = VendorName
+USE_USER_DESTDIR = yes
+
+PROVIDER = bbv
 
 QTC_PLUGIN_DEPENDS += coreplugin projectexplorer qmakeprojectmanager
+QTC_LIB_DEPENDS += extensionsystem
 
 # CodeCoverage files
 include($$QTC_SOURCE/src/qtcreatorplugin.pri)
@@ -21,5 +24,7 @@ include($$QTC_SOURCE/src/qtcreatorplugin.pri)
 include(codecoverage.pri)
 OTHER_FILES = CodeCoverage.pluginspec
 
-QMAKE_CXXFLAGS += -std=c++0x
-CXXFLAGS="-std=c++0x" ./configure
+CONFIG += c++11
+
+LIBS += -L/usr/lib/x86_64-linux-gnu/qtcreator \
+        -L/usr/lib/x86_64-linux-gnu/qtcreator/plugins/QtProject
